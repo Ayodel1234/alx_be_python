@@ -1,5 +1,3 @@
-# daily_reminder.py
-
 # Get user input
 task = input("Enter your task: ")
 priority = input("Priority (high/medium/low): ").lower()
@@ -18,6 +16,6 @@ match priority:
 
 # Time-bound modification
 if time_bound == "yes":
-    print(f"\nReminder: {base_message} that requires immediate attention today!")
+    print(f"Reminder: {base_message} that requires immediate attention today!")
 else:
-    print(f"\nNote: {base_message}. Consider completing it when you have free time.")
+    print(f"Note: {base_message}. Consider completing it when you have free time.")
