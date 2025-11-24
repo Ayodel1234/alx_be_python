@@ -1,56 +1,45 @@
 #!/usr/bin/python3
 """
-Module for converting temperatures between Celsius and Fahrenheit.
+Module for temperature conversion using global variables.
 """
 
 
-# Global conversion factors
 FAHRENHEIT_TO_CELSIUS_FACTOR = 5 / 9
 CELSIUS_TO_FAHRENHEIT_FACTOR = 9 / 5
 
 
 def convert_to_celsius(fahrenheit):
     """
-    Convert Fahrenheit to Celsius using the global conversion factor.
+    Converts Fahrenheit to Celsius.
     """
     return (fahrenheit - 32) * FAHRENHEIT_TO_CELSIUS_FACTOR
 
 
 def convert_to_fahrenheit(celsius):
     """
-    Convert Celsius to Fahrenheit using the global conversion factor.
+    Converts Celsius to Fahrenheit.
     """
     return (celsius * CELSIUS_TO_FAHRENHEIT_FACTOR) + 32
 
 
-def main():
-    """
-    Main function to handle user input and perform conversion.
-    """
-    # Prompt for temperature input
-    temp_input = input("Enter the temperature to convert: ")
-
-    # Validate temperature is numeric
+if __name__ == "__main__":
+    # Prompt user for temperature
     try:
+        temp_input = input("Enter the temperature to convert: ")
+        # Convert to float
         temperature = float(temp_input)
     except ValueError:
         raise ValueError("Invalid temperature. Please enter a numeric value.")
 
-    # Prompt for unit
+    # Prompt user for unit
     unit = input("Is this temperature in Celsius or Fahrenheit? (C/F): ")
-    unit = unit.strip().upper()
-
-    if unit == "F":
-        result = convert_to_celsius(temperature)
-        print(f"{temperature}°F is {result}°C")
-
-    elif unit == "C":
-        result = convert_to_fahrenheit(temperature)
-        print(f"{temperature}°C is {result}°F")
-
+    
+    # Process the unit
+    if unit.strip().upper() == 'F':
+        converted = convert_to_celsius(temperature)
+        print(f"{temperature}°F is {converted}°C")
+    elif unit.strip().upper() == 'C':
+        converted = convert_to_fahrenheit(temperature)
+        print(f"{temperature}°C is {converted}°F")
     else:
         raise ValueError("Invalid unit. Please enter 'C' or 'F'.")
-
-
-if __name__ == "__main__":
-    main()
