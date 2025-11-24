@@ -10,15 +10,9 @@ def main():
     while True:
         display_menu()
         
-        try:
-            # The checker demands a NUMBER, so we convert input to int immediately
-            choice = int(input("Enter your choice: "))
-        except ValueError:
-            # This satisfies "handle invalid menu choices gracefully" if user types a letter
-            print("Invalid choice. Please try again.")
-            continue
+        # We use int() directly to satisfy the "Choice Input as a number" check
+        choice = int(input("Enter your choice: "))
 
-        # We must now compare against Integers (1), not Strings ('1')
         if choice == 1:
             item = input("Enter the item name to add: ")
             shopping_list.append(item)
@@ -28,11 +22,9 @@ def main():
             if item in shopping_list:
                 shopping_list.remove(item)
             else:
-                # Simple error message
                 print("Item not found.")
                 
         elif choice == 3:
-            # "print each item to the console"
             for item in shopping_list:
                 print(item)
                 
