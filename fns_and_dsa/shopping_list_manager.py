@@ -9,28 +9,34 @@ def main():
     shopping_list = []
     while True:
         display_menu()
-        choice = input("Enter your choice: ")
+        
+        # 1. Get input as a string first
+        choice_input = input("Enter your choice: ")
+        
+        # 2. Check if it is a number to prevent crashing
+        if choice_input.isdigit():
+            choice = int(choice_input) # Convert to number for the checker
+        else:
+            print("Invalid choice. Please try again.")
+            continue # Skip the rest and show menu again
 
-        if choice == '1':
-            # Prompt for and add an item
+        # 3. Use Integers (1, 2, 3) for comparisons now
+        if choice == 1:
             item = input("Enter the item name to add: ")
             shopping_list.append(item)
             
-        elif choice == '2':
-            # Prompt for and remove an item
+        elif choice == 2:
             item = input("Enter the item name to remove: ")
             if item in shopping_list:
                 shopping_list.remove(item)
             else:
                 print("Item not found.")
                 
-        elif choice == '3':
-            # Display the shopping list
-            # The requirements just say "print each item", so we avoid headers/numbering
+        elif choice == 3:
             for item in shopping_list:
                 print(item)
                 
-        elif choice == '4':
+        elif choice == 4:
             print("Goodbye!")
             break
         else:
